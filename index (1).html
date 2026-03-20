@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaMind Firmware Flash</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0a1628;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #131d33;
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(56, 189, 248, 0.06);
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #38bdf8, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .steps {
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .step-num {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      font-weight: 700;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .step-text {
+      padding-top: 4px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    .step-text strong {
+      color: #e2e8f0;
+    }
+
+    esp-web-install-button {
+      display: block;
+      margin: 0 auto;
+    }
+
+    esp-web-install-button button {
+      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+    }
+
+    esp-web-install-button button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(14, 165, 233, 0.4);
+    }
+
+    .note {
+      margin-top: 2rem;
+      padding: 1rem 1.2rem;
+      background: rgba(250, 204, 21, 0.08);
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: #fbbf24;
+      line-height: 1.5;
+    }
+
+    .version {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #475569;
+    }
+
+    .unsupported {
+      display: none;
+      padding: 1.5rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      color: #f87171;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo">AquaMind</div>
+    <div class="subtitle">Firmware Flash Tool</div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Plug the AquaMind board into this computer with a <strong>USB cable</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Click the <strong>Flash Firmware</strong> button below</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Select the <strong>USB serial port</strong> when prompted (usually the only option)</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Wait for the flash to complete — <strong>do not unplug</strong> until it says done</div>
+      </div>
+    </div>
+
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate">Flash Firmware</button>
+      <span slot="unsupported">
+        <div class="unsupported" style="display:block">
+          Your browser doesn't support USB flashing. Please open this page in <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> on a desktop computer.
+        </div>
+      </span>
+      <span slot="not-allowed">
+        <div class="unsupported" style="display:block">
+          USB access was blocked. Make sure you're using <strong>HTTPS</strong> or <strong>localhost</strong>, and try again.
+        </div>
+      </span>
+    </esp-web-install-button>
+
+    <div class="note">
+      ⚡ Requires <strong>Google Chrome</strong> or <strong>Edge</strong> on a computer. Does not work on phones or Safari.
+    </div>
+
+    <div class="version">AquaMind Firmware v1.8.7</div>
+  </div>
+
+</body>
+</html>
