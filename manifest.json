@@ -6,7 +6,7 @@
       "chipFamily": "ESP32",
       "parts": [
         {
-          "path": "AquamindV11_ProductionClaude.ino.esp32.bin",
+          "path": "AquamindV11_ProductionClaude.ino.bin",
           "offset": 65536
         }
       ]
